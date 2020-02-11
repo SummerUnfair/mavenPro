@@ -2,6 +2,7 @@ package com.Pojo;
 
 import java.io.Serializable;
 
+
 public class User implements Serializable {
 
     private int id ;
@@ -35,4 +36,6 @@ public class User implements Serializable {
         this.id = id;
         this.username = username;
     }
+
+
 }
