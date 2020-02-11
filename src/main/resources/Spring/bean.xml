@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-<bean id="UserService"  class="com.Service.UserService" scope="singleton" init-method="springTest" destroy-method="springTest"></bean>
+<bean id="UserService"  class="com.Service.UserService" ></bean>
 
 
 </beans>
