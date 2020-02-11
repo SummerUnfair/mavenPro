@@ -19,16 +19,4 @@ public class UserController {
         usr2.springTest();
     }
 
-    /**
-     * IOC容器的使用
-     */
-    @Test
-    public void beanTest2(){
-        ApplicationContext ac = new ClassPathXmlApplicationContext("Spring/bean.xml");
-        UserService usr =  (UserService) ac.getBean("UserService");
-        UserService usr2 = ac.getBean("UserService",UserService.class);
-        usr.springTest();
-        usr2.springTest();
-    }
-
 }
