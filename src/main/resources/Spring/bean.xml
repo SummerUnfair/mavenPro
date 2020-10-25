@@ -2,12 +2,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
-
-<bean id="UserService"  class="com.Service.UserService" ></bean>
+    http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
+
+    <!--告知spring在创建容器时要扫描的包-->
+    <!--<context:component-scan base-package="com.Service"></context:component-scan>-->
+
+    <!--注册bean-->
+    <bean id="userService1" class="com.ferao.aopTest.UserServiceImpl" />
+    <bean id="log"  class="com.ferao.aopTest.AoPlog.Log" />
+    <bean id="afterLog" class="com.ferao.aopTest.AoPlog.AfterLog" />
+
+
+    <!--方式一：使用原生spring api 接口-->
+    <!--配置aop：需要导入aop的约束-->
+    <aop:config>
+        <!--切入点 expression : 表达式 ： execution (要执行的位置！ ****)-->
+        <aop:pointcut id="pointcut" expression="execution(* com.ferao.aopTest.UserServiceImpl.*(..))" />
+
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut" />
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut" />
+
+    </aop:config>
+
+
+
+
+    <!--<bean id="UserService"  class="com.Service.UserService" ></bean>-->
+
+    <!--<bean id="account" class="com.Pojo.Account">-->
+        <!--<constructor-arg name="name" value="张三"></constructor-arg>-->
+        <!--<constructor-arg name="age" value="23"></constructor-arg>-->
+        <!--<constructor-arg name="date" ref="now"></constructor-arg>-->
+    <!--</bean>-->
+    <!---->
+    <!--<bean id="address" class="com.Pojo.Address">-->
+        <!--<property name="name" value="张三"></property>-->
+        <!--<property name="age" value="12"></property>-->
+        <!--<property name="date" ref="now"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="now" class="java.util.Date"></bean>-->
 </beans>

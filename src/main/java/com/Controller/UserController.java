@@ -17,6 +17,6 @@ public class UserController {
         UserService usr2 = ac.getBean("UserService",UserService.class);
         usr.springTest();
         usr2.springTest();
-    }
 
+    }
 }
